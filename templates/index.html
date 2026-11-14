@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Blood Donation Prediction</title>
+
+        <style>
+
+        /* =====================================
+           GLOBAL STYLES
+        ===================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #202124;
+        }
+
+
+        /* =====================================
+           NAVIGATION BAR
+        ===================================== */
+
+        nav {
+            width: 100%;
+            background: white;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 8%;
+
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 21px;
+            font-weight: bold;
+
+            color: #c6283d;
+        }
+
+        .blood-icon {
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c6283d;
+        }
+
+
+        /* =====================================
+           HERO SECTION
+        ===================================== */
+
+        .hero {
+            min-height: 430px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 60px 10%;
+
+            background: linear-gradient(
+                135deg,
+                #fff5f6,
+                #ffffff
+            );
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .small-title {
+            color: #c6283d;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.15;
+
+            color: #202124;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #c6283d;
+        }
+
+        .hero p {
+            color: #666;
+
+            font-size: 17px;
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #c6283d;
+            color: white;
+
+            padding: 14px 28px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #a91f31;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================
+           BLOOD DROP DESIGN
+        ===================================== */
+
+        .hero-image {
+            width: 330px;
+            height: 330px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 15px 45px rgba(198, 40, 61, 0.15);
+
+            position: relative;
+        }
+
+        .big-drop {
+            font-size: 150px;
+
+            filter: drop-shadow(
+                0 15px 15px rgba(198, 40, 61, 0.25)
+            );
+        }
+
+
+        /* =====================================
+           INFORMATION CARDS
+        ===================================== */
+
+        .features {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+            width: 80%;
+            max-width: 1100px;
+
+            margin: -35px auto 60px;
+
+            position: relative;
+        }
+
+        .feature-card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================
+           PREDICTION SECTION
+        ===================================== */
+
+        .prediction-section {
+            padding: 30px 20px 70px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+
+            color: #222;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #777;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================
+           PREDICTION CARD
+        ===================================== */
+
+        .prediction-card {
+            width: 90%;
+            max-width: 850px;
+
+            margin: auto;
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .prediction-card h3 {
+            text-align: center;
+
+            font-size: 22px;
+
+            margin-bottom: 30px;
+
+            color: #333;
+        }
+
+
+        /* =====================================
+           FORM GRID
+        ===================================== */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #444;
+        }
+
+        .form-group input {
+            padding: 13px 14px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            background: #fafafa;
+
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+
+            border-color: #c6283d;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(198, 40, 61, 0.08);
+        }
+
+
+        /* =====================================
+           PREDICT BUTTON
+        ===================================== */
+
+        .predict-button {
+            width: 100%;
+
+            margin-top: 28px;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #c6283d;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .predict-button:hover {
+            background: #a91f31;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================
+           RESULT SECTION
+        ===================================== */
+
+        .result {
+            margin-top: 35px;
+
+            padding: 30px;
+
+            background: #fff7f8;
+
+            border: 1px solid #f2d4d8;
+
+            border-radius: 12px;
+        }
+
+        .result-title {
+            text-align: center;
+
+            color: #c6283d;
+
+            font-size: 23px;
+
+            margin-bottom: 25px;
+        }
+
+        .result-item {
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eee;
+
+            line-height: 1.5;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: bold;
+
+            color: #444;
+        }
+
+
+        /* =====================================
+           CONFIDENCE BAR
+        ===================================== */
+
+        .confidence-container {
+            margin-top: 18px;
+
+            margin-bottom: 15px;
+        }
+
+        .confidence-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .confidence-bar {
+            width: 100%;
+
+            height: 10px;
+
+            background: #e6e6e6;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+
+            background: #c6283d;
+
+            border-radius: 20px;
+
+            width: {{ confidence|default(0) }}%;
+        }
+
+
+        /* =====================================
+           DOWNLOAD BUTTON
+        ===================================== */
+
+        .download-button {
+            display: block;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            margin-top: 25px;
+
+            padding: 13px;
+
+            background: #333;
+
+            color: white;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .download-button:hover {
+            background: #222;
+        }
+
+
+        /* =====================================
+           ERROR MESSAGE
+        ===================================== */
+
+        .error {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #fff0f0;
+
+            color: #b00020;
+
+            border-radius: 7px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer {
+            background: #202124;
+
+            color: white;
+
+            padding: 30px 10%;
+
+            text-align: center;
+        }
+
+        footer p {
+            color: #bbb;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+        }
+
+
+        /* =====================================
+           TABLET RESPONSIVE DESIGN
+        ===================================== */
+
+        @media (max-width: 800px) {
+
+            .hero {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding-top: 50px;
+            }
+
+            .hero-content {
+                margin-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+
+                width: 90%;
+
+                margin-top: 30px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .big-drop {
+                font-size: 110px;
+            }
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+
+        /* =====================================
+           MOBILE RESPONSIVE DESIGN
+        ===================================== */
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .blood-icon {
+                font-size: 22px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .prediction-card {
+                padding: 25px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+        }
+
+        </style>
+
+    </head>
+
+
+    <body>
+
+
+        <!-- =====================================
+        NAVIGATION
+        ====================================== -->
+
+        <nav>
+
+            <div class="logo">
+
+                <span class="blood-icon">🩸</span>
+
+                Blood Donation Prediction
+
+            </div>
+
+
+            <div class="nav-links">
+
+                <a href="/">Home</a>
+
+                <a href="/about">About</a>
+
+                <a href="/contact">Contact</a>
+
+            </div>
+
+        </nav>
+
+
+
+        <!-- =====================================
+        HERO / HOME SECTION
+        ====================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="small-title">
+                    Machine Learning Healthcare System
+                </div>
+
+                <h1>
+                    Predict Blood Donation
+                    <span>with AI</span>
+                </h1>
+
+                <p>
+                    A machine learning based system that analyzes
+                    previous blood donation information and predicts
+                    whether a donor is likely to donate blood again.
+                </p>
+
+                <a
+                    href="#prediction"
+                    class="hero-button"
+                    >
+                    Start Prediction
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <div class="big-drop">
+                    🩸
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+        INFORMATION CARDS
+        ====================================== -->
+
+        <section class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Machine Learning
+                </h3>
+
+                <p>
+                    Uses a trained machine learning model
+                    to generate predictions.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Smart Analysis
+                </h3>
+
+                <p>
+                    Analyzes previous donation information
+                    to estimate donor behavior.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📄
+                </div>
+
+                <h3>
+                    PDF Report
+                </h3>
+
+                <p>
+                    Download the prediction result and
+                    recommendation as a PDF report.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================
+        PREDICTION SECTION
+        ====================================== -->
+
+        <section
+            class="prediction-section"
+            id="prediction"
+            >
+
+            <div class="section-heading">
+
+                <h2>
+                    Blood Donation Prediction
+                </h2>
+
+                <p>
+                    Enter the donor's previous donation information
+                    to generate a prediction.
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================================
+            PREDICTION CARD
+            ====================================== -->
+
+            <div class="prediction-card">
+
+                <h3>
+                    Enter Donor Details
+                </h3>
+
+
+                <form
+                    action="/predict"
+                    method="POST"
+                    >
+
+                    <div class="form-grid">
+
+
+                        <!-- Months Since Last Donation -->
+
+                        <div class="form-group">
+
+                            <label for="months_last">
+                                Months Since Last Donation
+                            </label>
+
+                            <input
+                            type="number"
+                            id="months_last"
+                            name="months_last"
+                            step="any"
+                            min="0"
+                            placeholder="Example: 2"
+                            required
+                            >
+
+                        </div>
+
+
+                        <!-- Number of Donations -->
+
+                        <div class="form-group">
+
+                            <label for="donations">
+                                Number of Donations
+                            </label>
+
+                            <input
+                            type="number"
+                            id="donations"
+                            name="donations"
+                            step="any"
+                            min="0"
+                            placeholder="Example: 5"
+                            required
+                            >
+
+                        </div>
+
+
+                        <!-- Total Volume -->
+
+                        <div class="form-group">
+
+                            <label for="volume">
+                                Total Volume Donated (cc)
+                            </label>
+
+                            <input
+                            type="number"
+                            id="volume"
+                            name="volume"
+                            step="any"
+                            min="0"
+                            placeholder="Example: 1250"
+                            required
+                            >
+
+                        </div>
+
+
+                        <!-- Months Since First Donation -->
+
+                        <div class="form-group">
+
+                            <label for="months_first">
+                                Months Since First Donation
+                            </label>
+
+                            <input
+                            type="number"
+                            id="months_first"
+                            name="months_first"
+                            step="any"
+                            min="0"
+                            placeholder="Example: 24"
+                            required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Predict Button -->
+
+                    <button
+                        type="submit"
+                        class="predict-button"
+                        >
+                        🩸 Predict Donation
+                    </button>
+
+                </form>
+
+
+
+                <!-- =====================================
+                ERROR MESSAGE
+                ====================================== -->
+
+                {% if error %}
+
+                    <div class="error">
+
+                        {{ error }}
+
+                    </div>
+
+                {% endif %}
+
+
+
+                <!-- =====================================
+                PREDICTION RESULT
+                ====================================== -->
+
+                {% if prediction %}
+
+                    <div class="result">
+
+                        <div class="result-title">
+                            Prediction Result
+                        </div>
+
+
+                        <div class="result-item">
+
+                            <span class="result-label">
+                                Prediction:
+                            </span>
+
+                            {{ prediction }}
+
+                        </div>
+
+
+                        <div class="result-item">
+
+                            <span class="result-label">
+                                Donor Category:
+                            </span>
+
+                            {{ category }}
+
+                        </div>
+
+
+                        <!-- Confidence -->
+
+                        <div class="confidence-container">
+
+                            <div class="confidence-header">
+
+                                <span>
+                                    Model Confidence
+                                </span>
+
+                                <span>
+                                    {{ confidence }}%
+                                </span>
+
+                            </div>
+
+
+                            <div class="confidence-bar">
+
+                                <div class="confidence-fill"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Recommendation -->
+
+                        <div class="result-item">
+
+                            <span class="result-label">
+                                Recommendation:
+                            </span>
+
+                            {{ recommendation }}
+
+                        </div>
+
+
+                        <!-- PDF Download -->
+
+                        <a
+                            href="/download_report"
+                            class="download-button"
+                            >
+                            📄 Download PDF Report
+                        </a>
+
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+        FOOTER
+        ====================================== -->
+
+        <footer>
+
+            <strong>
+                🩸 Blood Donation Prediction System
+            </strong>
+
+            <p>
+                Machine Learning Based Blood Donation Prediction
+            </p>
+
+        </footer>
+
+
+    </body>
+
+</html>
